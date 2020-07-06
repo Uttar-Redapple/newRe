@@ -1,0 +1,36 @@
+{
+    "dev": {
+      "username": "root",
+      "password": "redapple@2019",
+      "database": "gangwar",
+      "host"    : "127.0.0.1",
+      "port"    :"3306",
+      "dialect" : "mysql",
+      "dialectOptions": {
+          "charset": "utf8mb4_unicode_ci"
+      },
+      "datetime":"yyyy-MM-dd HH:mm:ss"
+    },
+    "stg": {
+      "username": "admin",
+      "password": "platanistadb2020",
+      "database": "gangwar",
+      "host": "platanistadb.cdtpfsjqgmgn.ap-south-1.rds.amazonaws.com",
+      "port":"3306",
+      "dialect": "mysql",
+      "dialectOptions": {
+        "charset": "utf8mb4_unicode_ci"
+    },
+      "datetime":"yyyy-MM-dd HH:mm:ss"
+    },
+    "prd": {
+      "username": "root",
+      "password": "redapple@2020",
+      "database": "prodDB",
+      "host"    : "127.0.0.1",
+      "dialect" : "mysql",
+      "timezone": "00:00",
+      "datetime":"yyyy-MM-dd HH:mm:ss"
+    }
+  }
+  
