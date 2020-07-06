@@ -39,18 +39,20 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/',express.static(path.join(__dirname, 'public')));
 app.use(routeLoggerMiddleware.logIp);
 app.use(globalErrorMiddleware.globalErrorHandler);
 
 
-app.use(express.static(path.join(__dirname, 'client')));
+//app.use(express.static(path.join(__dirname, 'client')));
 
 
 const routesPath = './app/routes';
 
 app.post('/uploadImage',upload.single('screenshot'),(req,res,next)=>{
-  res.send('uploaded!');
+  let fileName = req.file.filename;
+  console.log(fileName);
+  res.send(`${fileName}  uploaded!`);
 })
 
 app.all('*', function(req, res, next) {
