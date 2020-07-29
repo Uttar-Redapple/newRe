@@ -12,10 +12,10 @@
       "datetime":"yyyy-MM-dd HH:mm:ss"
     },
     "stg": {
-      "username": "admin",
-      "password": "platanistadb2020",
-      "database": "gangwar",
-      "host": "platanistadb.cdtpfsjqgmgn.ap-south-1.rds.amazonaws.com",
+      "username": "db_staging",
+      "password": "Smarts#DB@2190",
+      "database": "db_staging",
+      "host": "74.208.81.151",
       "port":"3306",
       "dialect": "mysql",
       "dialectOptions": {

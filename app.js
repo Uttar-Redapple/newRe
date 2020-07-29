@@ -15,22 +15,35 @@ let env       = appConfig.environment;
 let dbConfig    = require('./config/dbConfig.json')[env];
 const websocket = require('./app/www/socket');
 const restful = require ('./app/www/restful');
-const multer = require ('multer');
+//const multer = require ('multer');
+let response = require('./app/libs/responseLib');
 
 //multer storage engine
 
-const storage = multer.diskStorage({
-  destination:'./public/uploads',
-  filename:(req,file,cb)=>{
-    cb(null,file.fieldname + Date.now() + path.extname(file.originalname))
-  }
-})
+// const storage = multer.diskStorage({
+//   destination:(req, file, cb) => {
+//     //let dirRoot = './public/uploads/';
+//     let dirRoot = path.join(process.cwd(),'public/uploads/');
+//     let dir = dirRoot + req.query.Year + '/' + req.query.schoolName + '/' + req.query.Grade + '/' + req.query.ExerciseName;
+    
+//     if (!fs.existsSync(dir)){
+//        fs.mkdirSync(dir,{recursive: true});
+//        cb(null, dir);
+//      }else{
+//        cb(null,dir);
+//      }
+    
+// },
+//   filename:(req,file,cb)=>{
+//     cb(null,file.fieldname + Date.now() + path.extname(file.originalname))
+//   }
+// })
 
 //INIT upload
 
-const upload = multer({
-  storage:storage
-})
+// const upload = multer({
+//   storage:storage
+// })
 
 
 
@@ -49,11 +62,17 @@ app.use(globalErrorMiddleware.globalErrorHandler);
 
 const routesPath = './app/routes';
 
-app.post('/uploadImage',upload.single('screenshot'),(req,res,next)=>{
-  let fileName = req.file.filename;
-  console.log(fileName);
-  res.send(`${fileName}  uploaded!`);
-})
+// app.post('/uploadImage',upload.single('screenshot'),(req,res,next)=>{
+//   let fileName = req.file.filename;
+//   let filepath = req.file.path;
+//   let resObj = {
+//     fileName:fileName,
+//     filepath:filepath
+//   }
+//   console.log(resObj);
+//   let apiResponse = response.generate(1,`${fileName}  uploaded!`,resObj)
+//   res.send(apiResponse);
+// })
 
 app.all('*', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -151,13 +170,13 @@ process.on('unhandledRejection', (reason, p) => {
  */
 
 
-// sequelize
-// .authenticate()
-// .then(() => {
-//   console.log(`Database Connection has been established successfully.Using Port:${dbConfig.port}`);
-// })
-// .catch(err => {
-//   console.error('Unable to connect to the database:', err);
-// });
+sequelize
+.authenticate()
+.then(() => {
+  console.log(`Database Connection has been established successfully.Using Port:${dbConfig.port}`);
+})
+.catch(err => {
+  console.error('Unable to connect to the database:', err);
+});
 
 module.exports = app;

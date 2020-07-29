@@ -8,6 +8,7 @@ appConfig.apiVersion = '/api/v1';
 appConfig.jwtTokenSecret = 'redApple_#$@@1729_gangwar##secretKey@';
 appConfig.MAXroomLimit = 10;
 appConfig.MAXleaderBoardCount = 20;
+appConfig.fileUploadDIR = '/var/www/vhosts/cwksmarts.com/httpdocs/test/GalleryUploads/';
 
 
 module.exports = {
@@ -18,5 +19,6 @@ module.exports = {
     apiVersion : appConfig.apiVersion,
     jwtTokenSecret:appConfig.jwtTokenSecret,
     MAXroomLimit:appConfig.MAXroomLimit,
-    MAXleaderBoardCount:appConfig.MAXleaderBoardCount
+    MAXleaderBoardCount:appConfig.MAXleaderBoardCount,
+    fileUploadDIR:appConfig.fileUploadDIR
 };
